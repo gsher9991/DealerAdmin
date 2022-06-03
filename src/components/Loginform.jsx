@@ -12,7 +12,7 @@ import axios from "axios";
 //   useLocation
 // } from "react-router-dom";
 import { baseurl } from "../utils/api";
-import Auth from "./Auth";
+// import Auth from "./Auth";
 // import Welcome from './Welcome'
 // import Auth from "./Auth";
 
@@ -23,28 +23,10 @@ const Loginform = () => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const localvalue = () => {
-    return localStorage.getItem(values);
-  };
+  // const localvalue = () => {
+  //   return localStorage.getItem(values);
+  // };
   // console.log(localvalue);
-
-  const handleApi2 = (res) => {
-    const result = res.info;
-    axios
-      .post(
-        `${baseurl}/account/${result[0].company_id}/${result[0].member_id}/permission/${result[0].member_id}/`,
-        values,
-        {
-          headers: {
-            "content-type": "application/json",
-            Authorization: `Bearer ${res.access_token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-      });
-  };
 
   const handleApi = (e) => {
     e.preventDefault();
@@ -57,24 +39,22 @@ const Loginform = () => {
       })
       .then((res) => {
         console.log(res);
-        handleApi2(res.data);
-
-        // localStorage.setItem("userdata", JSON.stringify(res.data));
-        //   const result = res.data.info;
-        //   axios
-        //     .post(
-        //       `${baseurl}/account/${result[0].company_id}/${result[0].member_id}/permission/${result[0].member_id}/`,
-        //       {
-        //         headers: {
-        //           "content-type": "application/json",
-        //           Authorization: `Bearer ${res.data.access_token}`,
-        //         },
-        //       }
-        //     )
-        //     .then(res);
-        //   // setTimeout(() => {
-        //   //   window.location.reload();
-        //   // }, 1000);
+        localStorage.setItem("data", JSON.stringify(res.data));
+        // const result = res.data.info;
+        // axios
+        //   .post(
+        //     `${baseurl}/account/${result[0].company_id}/${result[0].member_id}/permission/${result[0].member_id}/`,
+        //     {
+        //       headers: {
+        //         "content-type": "application/json",
+        //         Authorization: `Bearer ${res.data.access_token}`,
+        //       },
+        //     }
+        //   )
+        //   .then(res);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       });
   };
 
