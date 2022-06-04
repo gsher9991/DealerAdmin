@@ -1,9 +1,9 @@
-// import logo from './logo.svg';
 import "./App.css";
 import Loginform from "./components/Loginform";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Welcome from "./components/Welcome";
-const localData = localStorage.getItem("data");
+import { localData } from "./utils/api";
+
 function App() {
   return (
     <div className="App">
