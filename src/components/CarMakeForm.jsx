@@ -13,7 +13,7 @@ function CarMakeForm() {
   const handleApi = (e) => {
     e.preventDefault();
     axios
-      .post(`${baseurl}/company/${mc_ID}/${mId}/plan/car/make/`, {
+      .post(`${baseurl}/company/${mc_ID}/${mId}/plan/car/make/`, values, {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${access}`,
@@ -21,7 +21,6 @@ function CarMakeForm() {
       })
       .then((res) => {
         console.log(res);
-        localStorage.setItem("data", JSON.stringify(res.data));
         const result = res.data.info;
         console.log(result);
       });
@@ -36,21 +35,9 @@ function CarMakeForm() {
           type="email"
           name="count"
           className="form-control"
-          onChange={handleChange("email")}
+          onChange={handleChange("name")}
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
-          Page Number
-        </label>
-        <input
-          type="password"
-          name="p-number"
-          onChange={handleChange("password")}
-          className="form-control"
-          id="exampleInputPassword1"
         />
       </div>
 
