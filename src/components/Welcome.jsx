@@ -41,11 +41,11 @@ function Welcome() {
           setValues={setFormValue}
           handleList={handleList}
         />
-        <ul>
+        <ol>
           {values.results?.map((item) => (
             <li onClick={() => setFormValue(item)}>{item.name}</li>
           ))}
-        </ul>
+        </ol>
         <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
